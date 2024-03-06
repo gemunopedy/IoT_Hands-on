@@ -1,5 +1,5 @@
 # IoTハンズオン
-IoTハンズオンの手順書です。Raspberry Pi OSの起動が完了し、インターネット接続及びターミナル起動が完了している状態からの手順となります。- 
+IoTハンズオンの手順書です。Raspberry Pi OSの起動が完了し、インターネット接続及びターミナル起動が完了している状態からの手順となります。-
 
 ## 1.データ収集(Rasberry Pi構築)
 ### 1.1 SSH/I2C有効化
@@ -40,7 +40,8 @@ raspi-configコマンドを使用して機能を有効化<br>
 `(hands-on) morita@raspberrypi:~ $ `  
 <br>
 
-
+### 1.3 センサー接続
+Rasberry Piと
 
 
 
