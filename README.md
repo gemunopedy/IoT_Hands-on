@@ -2,7 +2,7 @@
 IoTハンズオンの手順書です。Raspberry Pi OSの起動が完了し、インターネット接続及びターミナル起動が完了している状態からの手順となります。- 
 
 ## 1.データ収集(Rasberry Pi構築)
-- SSH/I2C有効化
+### 1.1 SSH/I2C有効化
 raspi-configコマンドを使用して機能を有効化<br>
  `morita@raspberrypi:~ $ sudo raspi-config`<br><br>
 「3 Inteface Options」を選択<br>
@@ -29,6 +29,17 @@ raspi-configコマンドを使用して機能を有効化<br>
 <br>
 以上でSSH/I2Cの設定は完了したので、「finish」を選択<br>
 <img width="1078" alt="スクリーンショット 2024-03-06 0 06 23" src="https://github.com/gemunopedy/IoT_Hands-on/assets/1537206/3cac61ce-3224-4550-9709-7fbd116c5bf2">
+<br>
+
+### 1.2 Python仮想化環境構築(venv)  
+データ収集する際に必要なモジュールやその他ツールのインストール(pip install)をする際、仮想環境で実施しないとRasberry Pi OSだとエラーが発生するため、仮想環境を構築し、今後は仮想環境上で作業を実施する<br>
+<br>
+下記コマンドにて仮想環境構築。「hands-on」の箇所は任意の文字で問題なし。ターミナルの先頭に(hands-on)のように表示されれば作業環境が仮想環境上になっているので問題なし<br>
+`morita@raspberrypi:~ $ python -m venv hands-on`  
+`morita@raspberrypi:~ $ source ./hands-on/bin/activate`  
+`(hands-on) morita@raspberrypi:~ $ `  
+<br>
+
 
 
 
