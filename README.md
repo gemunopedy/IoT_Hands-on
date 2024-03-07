@@ -85,6 +85,18 @@ Rasberry Piとサーミスタをブレッドボードを利用して接続。ま
 <br>
 
 ### 1.4 温度情報収集
+pythonスクリプトを実行して温度情報が取れることを確認する。まずはスクリプトをダウンロード。<br>
+`(hands-on) morita@raspberrypi:~/raphael-kit/python $ git clone https://github.com/sunfounder/raphael-kit.git`
+<br>
+ダウンロードが完了したら、フォルダ移動<br>
+`(hands-on) morita@raspberrypi:~ $ cd raphael-kit/python`<br>
+`(hands-on) morita@raspberrypi:~/raphael-kit/python $`<br>
+スクリプトを実行<br>
+`(hands-on) morita@raspberrypi:~/raphael-kit/python $ sudo python3 2.2.2_Thermistor.py `<br>
+以下のように温度情報が表示されれば成功。ただ今回のキットはあまり調子が良くなく、温度情報が取得できない時がある。<br>
+そうなるとValueErrorとなりスクリプトが止まるが問題ない。またスクリプト実行時に温度情報が表示されない場合でも、繰り返しスクリプト実行すれば表示されることがある<br>
+またもともとのADC0834で処理されるA/D変換がおかしいのか温度表示が摂氏としてあり得ない数字が表示されるが今回はデータ取得できているということでスルーする<br>
+<img width="831" alt="スクリーンショット 2024-03-07 10 18 20" src="https://github.com/gemunopedy/IoT_Hands-on/assets/1537206/2d49cae6-b32b-4ce4-9b8a-c917e0d4d839">
 
 
 
