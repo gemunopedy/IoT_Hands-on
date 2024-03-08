@@ -40,7 +40,7 @@ raspi-configコマンドを使用して機能を有効化<br>
 `(hands-on) morita@raspberrypi:~ $ `  
 <br>
 必要モジュールのインストール。最後にSuccessfully installedと表示されれば完了<br>
-`(hands-on) morita@raspberrypi:~/raphael-kit/python $ pip install RPi.GPIO`
+`(hands-on) morita@raspberrypi:~ $ pip install RPi.GPIO`
 
 ### 1.3 センサー接続
 Rasberry Piとサーミスタをブレッドボードを利用して接続。まずはブレッドボードとRasberry Piを接続。接続完了後のイメージは下写真<br>
