@@ -29,6 +29,11 @@ https://www.aterm.jp/function/mr05ln/guide/lte_3g.html
 <br>
 <br>
 
+* APN設定は下記情報を入れてください。  
+APN: mobiledata.ntt.com  
+ID: mobile@icms-p.ntt.com  
+PASS: protconv
+
 * 左上にアンテナピクトとLTEが表示されればAPN設定は完了となります。
 <img width="30%" alt="IMG_1687" src="https://github.com/gemunopedy/IoT_Hands-on/assets/1537206/adb8240f-4967-435a-b3bb-f6aa5f083f7f">
 <br>
@@ -55,34 +60,33 @@ https://sozorablog.com/raspberrypi_initial_setting/
 #### 1.2.2 WIFI設定
 * デスクトップ右上に表示される無線マークをクリックし、該当のSSIDを選択してPWを投入してください。（1.2.1でWIFIを選択できた場合はSKIP）
 
+#### 1.2.3 SSH/I2C有効化
+* ICGWのリモートアクセス機能に必要はssh及び温度センサからのデータ収集に必要なI2C通信の有効化を行います。
+* GUIでも設定可能ですが、今回はCLIのraspi-configコマンドを利用して設定します。  
+`morita@raspberrypi:~ $ sudo raspi-config`
+* 下図のように画面が遷移するので、「3 Inteface Options」を選択します。  
+<img width="50%" alt="スクリーンショット 2024-03-05 14 59 27" src="https://github.com/gemunopedy/IoT_Hands-on/assets/1537206/adbf8873-d6d3-41ef-b1d3-58e6f7aa3c74">  
 
+* 「I1 SSH」を選択します。  
+<img width="50%" alt="スクリーンショット 2024-03-05 23 58 06" src="https://github.com/gemunopedy/IoT_Hands-on/assets/1537206/cc2d7749-7952-44a0-baa4-a8f3c3deabe8">
 
-raspi-configコマンドを使用して機能を有効化<br>
- `morita@raspberrypi:~ $ sudo raspi-config`<br><br>
-「3 Inteface Options」を選択<br>
-<img width="50%" alt="スクリーンショット 2024-03-05 14 59 27" src="https://github.com/gemunopedy/IoT_Hands-on/assets/1537206/adbf8873-d6d3-41ef-b1d3-58e6f7aa3c74">
-<br>
-「I1 SSH」を選択<br>
-<img width="1079" alt="スクリーンショット 2024-03-05 23 58 06" src="https://github.com/gemunopedy/IoT_Hands-on/assets/1537206/cc2d7749-7952-44a0-baa4-a8f3c3deabe8">
-<br>
-「はい」を選択<br>
-<img width="542" alt="スクリーンショット 2024-03-06 0 00 16" src="https://github.com/gemunopedy/IoT_Hands-on/assets/1537206/f71c2c71-674e-476c-a407-39b8a107ae73">
-<br>
-下記のような画面が表示されればssh設定は完了<br>
-<img width="537" alt="スクリーンショット 2024-03-06 0 01 15" src="https://github.com/gemunopedy/IoT_Hands-on/assets/1537206/65c09556-a49a-4b01-9382-13122bce6c2b">
-<br>
-<br>
-続いてIC2の有効化。先ほどと同様に「3 Interface Options」を選択し、「I4 I2C」を選択<br>
-<img width="1078" alt="スクリーンショット 2024-03-06 0 05 48" src="https://github.com/gemunopedy/IoT_Hands-on/assets/1537206/9bc1db5a-ed61-454c-8c1d-a770ca4b4a36">
-<br>
-「はい」を選択<br>
-<img width="540" alt="スクリーンショット 2024-03-06 0 05 57" src="https://github.com/gemunopedy/IoT_Hands-on/assets/1537206/ffa0b7e5-1a22-4937-9c52-e51f2cffdf01">
-<br>
-下記のような画面が表示されればI2C設定は完了<br>
-<img width="539" alt="スクリーンショット 2024-03-06 0 06 05" src="https://github.com/gemunopedy/IoT_Hands-on/assets/1537206/13972599-791c-4440-93c4-5672fd372a36">
-<br>
-以上でSSH/I2Cの設定は完了したので、「finish」を選択<br>
-<img width="1078" alt="スクリーンショット 2024-03-06 0 06 23" src="https://github.com/gemunopedy/IoT_Hands-on/assets/1537206/3cac61ce-3224-4550-9709-7fbd116c5bf2">
+* 「はい」を選択します。
+<img width="50%" alt="スクリーンショット 2024-03-06 0 00 16" src="https://github.com/gemunopedy/IoT_Hands-on/assets/1537206/f71c2c71-674e-476c-a407-39b8a107ae73">
+
+* 下記のような画面が表示されればssh設定は完了です。  
+<img width="50%" alt="スクリーンショット 2024-03-06 0 01 15" src="https://github.com/gemunopedy/IoT_Hands-on/assets/1537206/65c09556-a49a-4b01-9382-13122bce6c2b">
+
+* 了解を押して、「3 Interface Options」→「I4 I2C」を選択します。  
+<img width="50%" alt="スクリーンショット 2024-03-06 0 05 48" src="https://github.com/gemunopedy/IoT_Hands-on/assets/1537206/9bc1db5a-ed61-454c-8c1d-a770ca4b4a36">
+
+* 「はい」を選択します。  
+<img width="50%" alt="スクリーンショット 2024-03-06 0 05 57" src="https://github.com/gemunopedy/IoT_Hands-on/assets/1537206/ffa0b7e5-1a22-4937-9c52-e51f2cffdf01">
+
+* 下記のような画面が表示されればI2C設定は完了です。  
+<img width="50%" alt="スクリーンショット 2024-03-06 0 06 05" src="https://github.com/gemunopedy/IoT_Hands-on/assets/1537206/13972599-791c-4440-93c4-5672fd372a36">
+
+* 「finish」を選択して、SSH/I2C有効化設定は完了です。
+<img width="50%" alt="スクリーンショット 2024-03-06 0 06 23" src="https://github.com/gemunopedy/IoT_Hands-on/assets/1537206/3cac61ce-3224-4550-9709-7fbd116c5bf2">
 <br>
 
 ### 1.2 Python仮想化環境構築(venv)  
