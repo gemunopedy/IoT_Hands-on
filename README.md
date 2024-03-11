@@ -1,12 +1,43 @@
 # IoTハンズオン
-IoTハンズオンの手順書です。Raspberry Pi OSの起動が完了し、インターネット接続及びターミナル起動が完了している状態からの手順となります。-
+IoTハンズオンの手順書です。
+
+ハンズオンの内容としては、ラズパイで温度情報を取得し、そのデータをICGWサービスを利用してGoogle Cloude上にデータ送信を行い、クラウド上で温度情報をグラフ化（可視化）するハンズオンとなっています。
+
+
+<img width="50%" alt="スクリーンショット 2024-03-11 13 56 38" src="https://github.com/gemunopedy/IoT_Hands-on/assets/1537206/cb529843-8a72-4529-a898-6892ccf400e7">
+
 
 ## 1.データ収集(Rasberry Pi構築)
+### 1.1 モバイルルータ設定
+モバイルルータ(Aterm MR05LN)にSIM(ICM TypeS)を挿入し、APN設定等初期設定を行います。
+
+#### 1.1.1 SIM挿入
+* SIMをnanoサイズで切り出し、モバイルルータのSIM1側に挿入します。
+<img width="30%" alt="IMG_1684" src="https://github.com/gemunopedy/IoT_Hands-on/assets/1537206/8c459a01-fccd-4854-b929-3da84b346322">
+<img width="30%" alt="IMG_1685" src="https://github.com/gemunopedy/IoT_Hands-on/assets/1537206/55e43b4c-f110-4e26-8b28-00ad16c3816c">
+<img width="30%" alt="IMG_1686" src="https://github.com/gemunopedy/IoT_Hands-on/assets/1537206/c0c1be82-16a1-4776-9fbc-48c4285221ca">
+<br>
+<br>
+<br>
+
+#### 1.1.2 APN設定
+* モバイルルータのAPN設定を行います。「つなぎかたガイド」の取扱説明書に従って設定していきます。
+https://www.aterm.jp/function/mr05ln/guide/lte_3g.html
+<img width="50%" alt="スクリーンショット 2024-03-11 16 28 38" src="https://github.com/gemunopedy/IoT_Hands-on/assets/1537206/e86f2d89-84ea-425a-a2e4-da11f5d0b4d8">
+<img width="50%" alt="スクリーンショット 2024-03-11 16 28 51" src="https://github.com/gemunopedy/IoT_Hands-on/assets/1537206/cac3bb69-2196-44e4-8790-49455673ca1c">
+<br>
+<br>
+<br>
+
+* 左上にアンテナピクトとLTEが表示されればAPN設定は完了となります。
+<img width="30%" alt="IMG_1687" src="https://github.com/gemunopedy/IoT_Hands-on/assets/1537206/adb8240f-4967-435a-b3bb-f6aa5f083f7f">
+
+
 ### 1.1 SSH/I2C有効化
 raspi-configコマンドを使用して機能を有効化<br>
  `morita@raspberrypi:~ $ sudo raspi-config`<br><br>
 「3 Inteface Options」を選択<br>
-<img width="1076" alt="スクリーンショット 2024-03-05 14 59 27" src="https://github.com/gemunopedy/IoT_Hands-on/assets/1537206/adbf8873-d6d3-41ef-b1d3-58e6f7aa3c74">
+<img width="50%" alt="スクリーンショット 2024-03-05 14 59 27" src="https://github.com/gemunopedy/IoT_Hands-on/assets/1537206/adbf8873-d6d3-41ef-b1d3-58e6f7aa3c74">
 <br>
 「I1 SSH」を選択<br>
 <img width="1079" alt="スクリーンショット 2024-03-05 23 58 06" src="https://github.com/gemunopedy/IoT_Hands-on/assets/1537206/cc2d7749-7952-44a0-baa4-a8f3c3deabe8">
