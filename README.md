@@ -31,9 +31,32 @@ https://www.aterm.jp/function/mr05ln/guide/lte_3g.html
 
 * 左上にアンテナピクトとLTEが表示されればAPN設定は完了となります。
 <img width="30%" alt="IMG_1687" src="https://github.com/gemunopedy/IoT_Hands-on/assets/1537206/adb8240f-4967-435a-b3bb-f6aa5f083f7f">
+<br>
+
+### 1.2 ラズパイ設定
+OSの初期設定を行います。
+
+#### 1.2.1 OS初期設定
+* 下記URLの「手順④：ラズベリーパイの初期設定」を参考に設定していきます。  
+https://sozorablog.com/raspberrypi_initial_setting/
+
+　　**WIFI選択時に、今回使用するモバイルルータのSSIDが表示されない場合があるが、その場合は「Skip」を選択してください。**
 
 
-### 1.1 SSH/I2C有効化
+　　**Update Softwareの選択肢は「Skip」を選択してください。**
+
+　　**（「Next」を選択してしまうとUpdateに時間がかかってしまうため、ハンズオンではskipします）**
+
+* モバイルルータのSSID及びPW確認方法は「情報」→「端末情報」→「無線LAN情報」を選択して表示されるプライマリ　SSID及び暗号化キーが情報となります。
+
+* モニタ上にデスクトップ画面が表示されればOS初期設定は完了です。
+<img width="50%" alt="IMG_1568" src="https://github.com/gemunopedy/IoT_Hands-on/assets/1537206/147102e7-97b8-4d22-9af6-30c9be749500">
+
+#### 1.2.2 WIFI設定
+* デスクトップ右上に表示される無線マークをクリックし、該当のSSIDを選択してPWを投入してください。（1.2.1でWIFIを選択できた場合はSKIP）
+
+
+
 raspi-configコマンドを使用して機能を有効化<br>
  `morita@raspberrypi:~ $ sudo raspi-config`<br><br>
 「3 Inteface Options」を選択<br>
