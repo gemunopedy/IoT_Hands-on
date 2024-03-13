@@ -89,41 +89,38 @@ https://sozorablog.com/raspberrypi_initial_setting/
 <img width="50%" alt="スクリーンショット 2024-03-06 0 06 23" src="https://github.com/gemunopedy/IoT_Hands-on/assets/1537206/3cac61ce-3224-4550-9709-7fbd116c5bf2">
 <br>
 
-### 1.2 Python仮想化環境構築(venv)  
-データ収集する際に必要なモジュールやその他ツールのインストール(pip install)をする際、仮想環境で実施しないとRasberry Pi OSだとエラーが発生するため、仮想環境を構築し、今後は仮想環境上で作業を実施する<br>
-<br>
-下記コマンドにて仮想環境構築。「hands-on」の箇所は任意の文字で問題なし。ターミナルの先頭に(hands-on)のように表示されれば作業環境が仮想環境上になっているので問題なし<br>
+### 1.2.4 Python仮想化環境構築(venv)  
+* データ収集する際に必要なモジュールやその他ツールのインストールを今回、pipコマンドを利用して実施しますが、python仮想環境上で実施しないとラズパイではエラーが発生してしまうため、仮想環境を構築して仮想環境上で以降の作業を実施します。
+* 下記コマンドにて仮想環境構築を構築して、モジュールをインストールします。「hands-on」の箇所は任意の文字列となります。ターミナルの先頭に(hands-on)のように表示されれば作業環境が仮想環境上になっています。
+* 今後、スクリプトを実行する際には先頭が(hands-on)になっていることを確認した上で実行してください。  
 `morita@raspberrypi:~ $ python -m venv hands-on`  
 `morita@raspberrypi:~ $ source ./hands-on/bin/activate`  
 `(hands-on) morita@raspberrypi:~ $ `  
-<br>
-必要モジュールのインストール。最後にSuccessfully installedと表示されれば完了<br>
-`(hands-on) morita@raspberrypi:~ $ pip install RPi.GPIO`
+`(hands-on) morita@raspberrypi:~ $ pip install RPi.GPIO`  
+* 最後にSuccessfully installedと表示されれば完了です。失敗した場合は、先頭に(hands-on)がついているかどうか、WIFI接続ができているかを確認してください。
 
 ### 1.3 センサー接続
-Rasberry Piとサーミスタをブレッドボードを利用して接続。まずはブレッドボードとRasberry Piを接続。接続完了後のイメージは下写真<br>
-![IMG_1578](https://github.com/gemunopedy/IoT_Hands-on/assets/1537206/04273b0a-e8ba-4f99-aaf9-4e9270091087)
+* ラズパイとサーミスタをブレッドボードを利用して接続していきます。下図のような接続をまずは目指します。  
+<img width="50%" alt="IMG_1578" src="https://github.com/gemunopedy/IoT_Hands-on/assets/1537206/04273b0a-e8ba-4f99-aaf9-4e9270091087">  
+
+* 用意するのはブレッドボード、40pinケーブル、GPIO拡張ボード
+<img width="50%" alt="IMG_1578" src="https://github.com/gemunopedy/IoT_Hands-on/assets/1537206/911650b5-1e4b-42d8-91d7-a2c9c27e3170"> 
+
+* まずはブレッドボードにGPIO拡張ボードを差し込みます。差し込み先としては、数字の1やabcといったアルファベットが上に来るようにし、GPIO拡張ボードの3V3や5VOの記載のあるピンが「1」列目に差し込みます。
+* 写真上では3V3が「c」や「d」に刺さるようになっていますが、ブレッドボードの仕組み上、どちらに挿しても問題ありません。それに合わせて配線する形になります。
+* ピンが見えなくなるまで押し込んでください。かなり力を入れて押し込む形になります。
+<img width="30%" alt="IMG_1571" src="https://github.com/gemunopedy/IoT_Hands-on/assets/1537206/733efd03-84c1-48a5-9d82-5f7eb661d18c">
+<img width="30%" alt="IMG_1573" src="https://github.com/gemunopedy/IoT_Hands-on/assets/1537206/02bc7a94-2e30-4219-9c04-45c15b89082a">
+
+* 続いてGPIO拡張ボードとラズパイを40pinケーブルを利用して接続します。オスメスが合うように接続します。
+<img width="30%" alt="IMG_1574" src="https://github.com/gemunopedy/IoT_Hands-on/assets/1537206/18ffb4ca-c7ea-48c4-b4ca-8cb0d0337e10">
+<img width="30%" alt="IMG_1575" src="https://github.com/gemunopedy/IoT_Hands-on/assets/1537206/c94c2270-9579-40f9-ac24-b084a8d9924a">  
 <br>
-<br>
-用意するのはブレッドボード、40pinケーブル、GPIO拡張ボード
-![IMG_1570](https://github.com/gemunopedy/IoT_Hands-on/assets/1537206/911650b5-1e4b-42d8-91d7-a2c9c27e3170)
-<br>
-ブレッドボードとGPIO拡張ボードとの接続を行う。3V3と記載されているpinがブレッドボードの1cに入るように挿入する。だいぶ強く押し込む必要あり。<br>
-ピンが見えなくなるまで押し込めたら完了。（※2枚目の写真上は1dに刺さっているように見えるが、別撮りのため1cに刺して問題なし）
-![IMG_1571](https://github.com/gemunopedy/IoT_Hands-on/assets/1537206/733efd03-84c1-48a5-9d82-5f7eb661d18c)
-<br>
-![IMG_1573](https://github.com/gemunopedy/IoT_Hands-on/assets/1537206/02bc7a94-2e30-4219-9c04-45c15b89082a)
-<br>
-続いてGPIO拡張ボードと40pinケーブルを接続。オスメスが合うように接続<br>
-![IMG_1574](https://github.com/gemunopedy/IoT_Hands-on/assets/1537206/18ffb4ca-c7ea-48c4-b4ca-8cb0d0337e10)
-<br>
-![IMG_1575](https://github.com/gemunopedy/IoT_Hands-on/assets/1537206/c94c2270-9579-40f9-ac24-b084a8d9924a)
-<br>
-次にラズパイと40pinケーブルを接続。これでラズパイとブレッドボードの接続は完了<br>
-![IMG_1576](https://github.com/gemunopedy/IoT_Hands-on/assets/1537206/56d73873-8303-4542-8968-b8828dc4e174)
-<br>
-![IMG_1577](https://github.com/gemunopedy/IoT_Hands-on/assets/1537206/02b80563-07fb-478a-ad8a-26e7ca723fd7)
-<br>
+
+<img width="30%" alt="IMG_1576" src="https://github.com/gemunopedy/IoT_Hands-on/assets/1537206/56d73873-8303-4542-8968-b8828dc4e174">
+<img width="30%" alt="IMG_1577" src="https://github.com/gemunopedy/IoT_Hands-on/assets/1537206/02b80563-07fb-478a-ad8a-26e7ca723fd7">
+
+
 <br>
 ブレッドーボード上にサーミスタ等を配線していく<br>
 (https://docs.sunfounder.com/projects/raphael-kit/ja/latest/python/2.2.2_thermistor_python.html)
