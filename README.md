@@ -120,24 +120,27 @@ https://sozorablog.com/raspberrypi_initial_setting/
 <img width="30%" alt="IMG_1576" src="https://github.com/gemunopedy/IoT_Hands-on/assets/1537206/56d73873-8303-4542-8968-b8828dc4e174">
 <img width="30%" alt="IMG_1577" src="https://github.com/gemunopedy/IoT_Hands-on/assets/1537206/02b80563-07fb-478a-ad8a-26e7ca723fd7">
 
-
-<br>
-ブレッドーボード上にサーミスタ等を配線していく<br>
+* ブレッドボード上にセンサーキットの部品を配線していきます。詳細内容は下記URL参照をお願いします。
 (https://docs.sunfounder.com/projects/raphael-kit/ja/latest/python/2.2.2_thermistor_python.html)
 <br>
-下図リストの物品を準備<br>
-![list_2](https://github.com/gemunopedy/IoT_Hands-on/assets/1537206/db6555e8-365d-4eed-b454-eacea39d39c7)
+
+* まずは以下の物品をセンサーキットから探し出して準備します。  
+<img width="50%" alt="IMG_list2" src="https://github.com/gemunopedy/IoT_Hands-on/assets/1537206/db6555e8-365d-4eed-b454-eacea39d39c7">
+
+* 以下を参考に配線作業を実施していきます。実物と図とで番号のずれがありますが、全く同じ場所に配線しなくても問題ありません。ブレッドボード内部の配線を意識して縦のライン/横のラインを合わせた配線ができていれば問題ありません。
+* 慣習としては、電源ラインを赤線、GNDラインを黒線で配線し、電源ラインを「+縦ライン」に、GNDラインを「-縦ライン」に接続すると切り分けの時など分かりやすかったりします。ただ決まりはないので最終的には個人の好みで配線して問題ありません。
 <br>
-下図を参考に配線作業を実施。現物と図とで番号にずれがあるので正確に同じ場所に配線することはできないが、ブレッドボードないの配線を意識して縦のライン/横のラインが同じであれば問題なし<br>
-![image202](https://github.com/gemunopedy/IoT_Hands-on/assets/1537206/e849707a-9ff8-427e-bb61-f53cca8031a7)
+(https://start-electronics.com/electronics/tools/breadboard-point/)
+
 <br>
-<img width="674" alt="スクリーンショット 2024-03-07 10 05 16" src="https://github.com/gemunopedy/IoT_Hands-on/assets/1537206/b335e6a4-02b7-43a6-9459-ef0ec58de618">
-<br>
-完成した際のイメージ<br>
-![IMG_1593](https://github.com/gemunopedy/IoT_Hands-on/assets/1537206/4e7e64d1-56a4-4549-8fad-35852bec4ebd)
-<br>
-![IMG_1595](https://github.com/gemunopedy/IoT_Hands-on/assets/1537206/e897429e-c7df-4a02-bb6c-ec6bbffb9db8)
-<br>
+<img width="50%" alt="IMG_202" src="https://github.com/gemunopedy/IoT_Hands-on/assets/1537206/e849707a-9ff8-427e-bb61-f53cca8031a7">
+<img width="50%" alt="IMG_0" src="https://github.com/gemunopedy/IoT_Hands-on/assets/1537206/b335e6a4-02b7-43a6-9459-ef0ec58de618">  
+
+* 配線後の完成イメージは以下となります。
+
+<img width="30%" alt="IMG_1593" src="https://github.com/gemunopedy/IoT_Hands-on/assets/1537206/4e7e64d1-56a4-4549-8fad-35852bec4ebd">  
+<img width="30%" alt="IMG_1593" src="https://github.com/gemunopedy/IoT_Hands-on/assets/1537206/e897429e-c7df-4a02-bb6c-ec6bbffb9db8">
+
 
 ### 1.4 温度情報収集
 pythonスクリプトを実行して温度情報が取れることを確認する。まずはスクリプトをダウンロード。<br>
