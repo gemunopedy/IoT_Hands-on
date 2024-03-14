@@ -143,19 +143,21 @@ https://sozorablog.com/raspberrypi_initial_setting/
 
 
 ### 1.4 温度情報収集
-pythonスクリプトを実行して温度情報が取れることを確認する。まずはスクリプトをダウンロード。<br>
-`(hands-on) morita@raspberrypi:~/raphael-kit/python $ git clone https://github.com/sunfounder/raphael-kit.git`
-<br>
-ダウンロードが完了したら、フォルダ移動<br>
-`(hands-on) morita@raspberrypi:~ $ cd raphael-kit/python`<br>
-`(hands-on) morita@raspberrypi:~/raphael-kit/python $`<br>
-スクリプトを実行<br>
-`(hands-on) morita@raspberrypi:~/raphael-kit/python $ sudo python3 2.2.2_Thermistor.py `<br>
-以下のように温度情報が表示されれば成功。ただ今回のキットはあまり調子が良くなく、温度情報が取得できない時がある。<br>
-そうなるとValueErrorとなりスクリプトが止まるが問題ない。またスクリプト実行時に温度情報が表示されない場合でも、繰り返しスクリプト実行すれば表示されることがある<br>
-またもともとのADC0834で処理されるA/D変換がおかしいのか温度表示が摂氏としてあり得ない数字が表示されるが今回はデータ取得できているということでスルーする<br>
-<img width="831" alt="スクリーンショット 2024-03-07 10 18 20" src="https://github.com/gemunopedy/IoT_Hands-on/assets/1537206/2d49cae6-b32b-4ce4-9b8a-c917e0d4d839">
+センサーキット付属のpythonスクリプトを実行してターミナル上に温度情報が表示されることを確認していきます。
 
+* スクリプトをダウンロードして、スクリプトを実行します。
+
+`(hands-on) morita@raspberrypi:~/raphael-kit/python $ git clone https://github.com/sunfounder/raphael-kit.git`  
+`(hands-on) morita@raspberrypi:~ $ cd raphael-kit/python`  
+`(hands-on) morita@raspberrypi:~/raphael-kit/python $`  
+`(hands-on) morita@raspberrypi:~/raphael-kit/python $ sudo python3 2.2.2_Thermistor.py `  
+
+* 正しく温度情報が取れている場合は、以下のような形でターミナル上に温度情報が表示されます。スクリプトを止める際には、「Ctrl+C」を実行してください。
+* 温度情報が正しく表示されず、スクリプトがエラーで止まってしまう場合には、配線が正しくない可能性があります。再度配線が正しいかご確認をお願いいたします。  
+
+<img width="50%" alt="IMG_1" src="https://github.com/gemunopedy/IoT_Hands-on/assets/1537206/bc11801d-9ba8-4868-8631-7c1b3a6769dd">
+
+* 正しく温度情報が取れているようでしたら、サーミスタを直接触って温度を上げてみてターミナル上の表示が変わることを確認してみてください。
 
 
 
