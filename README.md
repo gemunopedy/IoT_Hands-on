@@ -7,7 +7,7 @@ IoTハンズオンの手順書です。
 <img width="50%" alt="スクリーンショット 2024-03-11 13 56 38" src="https://github.com/gemunopedy/IoT_Hands-on/assets/1537206/cb529843-8a72-4529-a898-6892ccf400e7">
 
 
-## 1.データ収集(Rasberry Pi構築)
+## 1 データ収集(Rasberry Pi構築)
 ### 1.1 モバイルルータ設定
 モバイルルータ(Aterm MR05LN)にSIM(ICM TypeS)を挿入し、APN設定等初期設定を行います。
 
@@ -53,6 +53,7 @@ https://sozorablog.com/raspberrypi_initial_setting/
 　　**（「Next」を選択してしまうとUpdateに時間がかかってしまうため、ハンズオンではskipします）**
 
 * モバイルルータのSSID及びPW確認方法は「情報」→「端末情報」→「無線LAN情報」を選択して表示されるプライマリ　SSID及び暗号化キーが情報となります。
+* user/password設定に関しては、ICGWのリモートアクセス機能を利用して参加者同士でssh実施するので、ハンズオン内においては、簡易なuser/password指定をお願いいたします。ハンズオン終了後はOS初期化致します。
 
 * モニタ上にデスクトップ画面が表示されればOS初期設定は完了です。
 <img width="50%" alt="IMG_1568" src="https://github.com/gemunopedy/IoT_Hands-on/assets/1537206/147102e7-97b8-4d22-9af6-30c9be749500">
@@ -158,6 +159,36 @@ https://sozorablog.com/raspberrypi_initial_setting/
 <img width="50%" alt="IMG_1" src="https://github.com/gemunopedy/IoT_Hands-on/assets/1537206/bc11801d-9ba8-4868-8631-7c1b3a6769dd">
 
 * 正しく温度情報が取れているようでしたら、サーミスタを直接触って温度を上げてみてターミナル上の表示が変わることを確認してみてください。
+
+## 2 データ送信（ICGWサービス利用）
+ラズパイで取得したデータをNTTComのIoT Connect Gatewayサービスを利用してGoogle Cloud上に送信していきます。
+
+### 2.1 リモートアクセス機能確認
+* データ送信を行う前にICGWの特徴的な機能の一つであるリモートアクセス機能がどういった機能なのか実際に利用して確認していきたいと思います。
+<img width="80%" alt="スクリーンショット 2024-03-14 13 51 40" src="https://github.com/gemunopedy/IoT_Hands-on/assets/1537206/8033f0e8-8ebf-4cf4-9170-a2e83dd96ff9">
+
+ 
+* SDPFポータルから設定を実施していきます。下記URLへのアクセスをお願いいたします。 事前に設定していただいたユーザ名/パスワード及び二段階認証にてログインお願いいたします。
+https://portal-jp.ecl.ntt.com/glass/login?destination=%2Fglass%2Fhome&session-expired=1
+
+* ログインが完了したら、上部の「サービス」→「Smart Data Platform」を選択します。  
+<img width="80%" alt="スクリーンショット 2024-03-12 15 37 57" src="https://github.com/gemunopedy/IoT_Hands-on/assets/1537206/f58af888-540f-49b1-8e71-f14f0ff7aff6">
+
+* 「ワークスペースを選択」をクリックして、ワークスペース名「Hands-on」を選択します。
+<img width="50%" alt="スクリーンショット 2024-03-12 15 38 22" src="https://github.com/gemunopedy/IoT_Hands-on/assets/1537206/f2aa8e10-f173-4082-86c0-6b6e95343789">
+<img width="50%" alt="スクリーンショット 2024-03-12 15 38 35" src="https://github.com/gemunopedy/IoT_Hands-on/assets/1537206/3f297e70-80de-487f-a1dd-02588416ba05">
+
+* 現在選択中のワークスペースに「Hands-on」が表示されていれば選択完了です。
+<img width="80%" alt="スクリーンショット 2024-03-12 15 38 52" src="https://github.com/gemunopedy/IoT_Hands-on/assets/1537206/30054b0e-c6a6-4375-9f1e-adbdbab6dad2">
+
+* 続いて、上部の「メニュー」を選択して、上部の「IoT」を選択します。IoTサービス一覧に画面がスクロールされますので、そこで「IoT Connect Gateway」をクリックします。
+<img width="50%" alt="スクリーンショット 2024-03-12 15 39 11" src="https://github.com/gemunopedy/IoT_Hands-on/assets/1537206/e5040d4c-f949-4344-ae61-4e34f7cfafe3">
+<img width="50%" alt="スクリーンショット 2024-03-12 15 39 19" src="https://github.com/gemunopedy/IoT_Hands-on/assets/1537206/33ac494a-6bf4-4aef-b386-58f2e14c41c5">
+
+* 各SIM情報が表示されていればここからICGWの設定が可能となります。  
+* ICGWの設定に関しては、各自に配布されたHSNのSIMを設定する形になります。自分のHSNはSIMカードに記載されていますのでご確認お願いいたします。
+<img width="50%" alt="スクリーンショット 2024-03-12 15 39 41" src="https://github.com/gemunopedy/IoT_Hands-on/assets/1537206/23af5425-77e4-4a93-8256-d90fa0fd875b">
+<img width="50%" alt="IMG_1684" src="https://github.com/gemunopedy/IoT_Hands-on/assets/1537206/ffab2b88-d6d9-4748-902f-de3f4250cf5d">
 
 
 
