@@ -165,6 +165,7 @@ https://sozorablog.com/raspberrypi_initial_setting/
 
 ### 2.1 リモートアクセス機能確認
 * データ送信を行う前にICGWの特徴的な機能の一つであるリモートアクセス機能がどういった機能なのか実際に利用して確認していきたいと思います。
+* リモートアクセス機能は端末にGlobal IP Addressを付与していなくても外部から端末に対してsshやRDPが可能となる機能になります。
 <img width="80%" alt="スクリーンショット 2024-03-14 13 51 40" src="https://github.com/gemunopedy/IoT_Hands-on/assets/1537206/8033f0e8-8ebf-4cf4-9170-a2e83dd96ff9">
 
  
@@ -190,6 +191,13 @@ https://portal-jp.ecl.ntt.com/glass/login?destination=%2Fglass%2Fhome&session-ex
 <img width="50%" alt="スクリーンショット 2024-03-12 15 39 41" src="https://github.com/gemunopedy/IoT_Hands-on/assets/1537206/23af5425-77e4-4a93-8256-d90fa0fd875b">
 <img width="50%" alt="IMG_1684" src="https://github.com/gemunopedy/IoT_Hands-on/assets/1537206/ffab2b88-d6d9-4748-902f-de3f4250cf5d">
 
+* 以降のリモートアクセス設定に関しては、以下URLのマニュアルに従って実施していきます。
+* マニュアルとの差分としては、今回は接続先デバイスポートに「22」を入力してください。
+* アクセス利用例ではSSHのコマンドをコピーしますが、今回は席が隣もしくは近くにいる方のラズパイにssh確認を実施しますので、相手のSIM情報及びuser/passwordを確認してコピー及びsshログインをお願いします。
+* sshコマンドを実施する際は、末尾に 「-l user」という形でuser指定をお願いします。
+https://sdpf.ntt.com/services/docs/icgw/tutorials/rsts/remote/index.html#about-setting
 
+* 問題なくログインできれば、以下のようなターミナル表示となります。これでICGWのリモートアクセス機能の確認は完了となります。
+<img width="80%" alt="スクリーンショット 2024-03-15 21 19 47" src="https://github.com/gemunopedy/IoT_Hands-on/assets/1537206/0fa6e2ce-f347-4f74-b457-55cd4b5ba770">
 
-
+### 2.2 クラウドサービス接続
