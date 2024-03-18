@@ -244,3 +244,36 @@ https://laboratory.kiyono-co.jp/69/gcp/
 <img width="50%" alt="スクリーンショット 2024-03-16 0 28 50" src="https://github.com/gemunopedy/IoT_Hands-on/assets/1537206/c5db9086-f468-478e-b5a4-032a4fe2ea6f">
 
 #### 2.2.2 IAM設定
+* ICGWからPub/Subへのリソースアクセスを認可するための設定を行っていきます。
+* 左のメニューから「IAMと管理」→「サービス アカウント」をクリックします。その後、「サービス アカウントを作成」をクリックします。
+<img width="50%" alt="スクリーンショット 2024-03-16 0 29 17" src="https://github.com/gemunopedy/IoT_Hands-on/assets/1537206/f3459ec1-fe41-414b-8de1-b898c2f615c0">
+<img width="50%" alt="スクリーンショット 2024-03-16 0 30 38" src="https://github.com/gemunopedy/IoT_Hands-on/assets/1537206/34667ca6-2ad7-41d3-907d-a79487709724">
+
+* サービス アカウント名は自分が作成したものと分かる形で入力し、「作成して続行」をクリックします。
+<img width="50%" alt="スクリーンショット 2024-03-16 0 31 37" src="https://github.com/gemunopedy/IoT_Hands-on/assets/1537206/a2909a14-01ec-41e4-84af-838708ec546a">
+
+* ロールの選択で「Pub/Sub編集者」を選択します。選択が完了したら「完了」をクリックします。
+<img width="30%" alt="スクリーンショット 2024-03-16 0 33 50" src="https://github.com/gemunopedy/IoT_Hands-on/assets/1537206/57ca94ee-dc3f-42cf-bfa0-0dc94783100a">
+<img width="30%" alt="スクリーンショット 2024-03-16 0 33 57" src="https://github.com/gemunopedy/IoT_Hands-on/assets/1537206/d6e315de-3ad6-45e5-b7be-f3f87551da69">
+
+* 一覧上に作成したサービスアカウントが表示されていれば作成完了です。作成したサービスアカウントをクリックします。その後「キー」タブを選択します。
+<img width="50%" alt="スクリーンショット 2024-03-16 0 34 29" src="https://github.com/gemunopedy/IoT_Hands-on/assets/1537206/ef4b4ead-c0cf-4e99-a440-05938a950018">
+<img width="80%" alt="スクリーンショット 2024-03-16 0 34 44" src="https://github.com/gemunopedy/IoT_Hands-on/assets/1537206/ed90b321-87cd-464a-881d-fe590fe23260">
+
+* 「鍵を追加」→「新しい鍵を作成」をクリックします。
+<img width="50%" alt="スクリーンショット 2024-03-16 0 34 52" src="https://github.com/gemunopedy/IoT_Hands-on/assets/1537206/1cd35c02-3fb4-43f4-a405-06dade04e22f">
+
+* JSONを選択して「作成」をクリックします。秘密鍵がローカルに保存されたことを確認します。
+<img width="50%" alt="スクリーンショット 2024-03-16 0 35 01" src="https://github.com/gemunopedy/IoT_Hands-on/assets/1537206/02f9c7e3-3c36-4e34-b240-608aec58a271">
+<img width="50%" alt="スクリーンショット 2024-03-19 8 09 55" src="https://github.com/gemunopedy/IoT_Hands-on/assets/1537206/b4689a0b-c5a8-4806-ab42-26f14d19e5c7">
+
+* JSONファイルの中身は以下のようになっており、後ほどICGW設定時に使用します。
+<img width="50%" alt="スクリーンショット 2024-03-16 0 36 28" src="https://github.com/gemunopedy/IoT_Hands-on/assets/1537206/8e081078-416b-4e3d-bde2-9e69855fba0f">
+
+#### 2.2.3 ICGW設定
+* 事前に必要な設定が完了したので、ICGWのクラウドサービス接続機能のポータルでの設定を行っていきます。
+<img width="80%" alt="スクリーンショット 2024-03-19 8 16 23" src="https://github.com/gemunopedy/IoT_Hands-on/assets/1537206/29c67ec5-9b8d-4704-964f-800f3af0dc60">
+<img width="80%" alt="スクリーンショット 2024-03-19 8 29 16" src="https://github.com/gemunopedy/IoT_Hands-on/assets/1537206/274f0d8f-8dcd-4271-9788-6ce1287db3aa">
+
+
+
