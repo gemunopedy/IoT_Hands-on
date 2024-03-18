@@ -168,7 +168,21 @@ https://sozorablog.com/raspberrypi_initial_setting/
 * リモートアクセス機能は端末にGlobal IP Addressを付与していなくても外部から端末に対してsshやRDPが可能となる機能になります。
 <img width="80%" alt="スクリーンショット 2024-03-14 13 51 40" src="https://github.com/gemunopedy/IoT_Hands-on/assets/1537206/8033f0e8-8ebf-4cf4-9170-a2e83dd96ff9">
 
- 
+#### 2.1.1 モバイルルータ設定
+* リモートアクセス機能を利用して外部からsshを実施するためには、モバイルルータでのポートフォワーディング機能を設定する必要があるため、その設定を行っていきます。
+* ブラウザを起動して、URLに192.168.179.1を入力してクイック設定webにアクセスします。
+<img width="50%" alt="スクリーンショット 2024-03-12 14 29 23" src="https://github.com/gemunopedy/IoT_Hands-on/assets/1537206/77cec42c-a51d-4fdd-90fc-02a43620d01b">
+
+* 左部の「詳細設定」→「ポートマッピング設定」をクリックします。「ポートマッピング設定 エントリ一覧」が表示されたら「追加」
+<img width="30%" alt="スクリーンショット 2024-03-12 14 29 45" src="https://github.com/gemunopedy/IoT_Hands-on/assets/1537206/fb7703fa-ed73-4e1a-9592-5245876533fc">
+<img width="30%" alt="スクリーンショット 2024-03-12 14 30 03" src="https://github.com/gemunopedy/IoT_Hands-on/assets/1537206/1f32d3e5-1052-4ed7-bf12-ef84c91fcc44">
+
+* LAN側端末のIPアドレスにはラズパイに払い出されているIP Address（おそらく192.168.179.2の可能性あり。確認方法はterminal上で「ip a」コマンドを実行）を入力し、優先度を「1」として設定をクリックします。
+* ポートマッピング設定 エントリ一覧上に設定したリストが表示されていれば設定完了です。
+<img width="1039" alt="スクリーンショット 2024-03-12 14 31 17" src="https://github.com/gemunopedy/IoT_Hands-on/assets/1537206/7ab8b141-87d8-41c4-a486-694a36a738f9">
+<img width="1046" alt="スクリーンショット 2024-03-12 14 31 36" src="https://github.com/gemunopedy/IoT_Hands-on/assets/1537206/79f437b2-e5b3-4fa9-9dc3-28db9076b041">
+
+ #### 2.1.2 ポータル設定
 * SDPFポータルから設定を実施していきます。下記URLへのアクセスをお願いいたします。 事前に設定していただいたユーザ名/パスワード及び二段階認証にてログインお願いいたします。
 https://portal-jp.ecl.ntt.com/glass/login?destination=%2Fglass%2Fhome&session-expired=1
 
@@ -201,8 +215,12 @@ https://sdpf.ntt.com/services/docs/icgw/tutorials/rsts/remote/index.html#about-s
 <img width="80%" alt="スクリーンショット 2024-03-15 21 19 47" src="https://github.com/gemunopedy/IoT_Hands-on/assets/1537206/0fa6e2ce-f347-4f74-b457-55cd4b5ba770">
 
 ### 2.2 クラウドサービス接続
-* google cloud　コンソール接続
-<img width="80%" alt="スクリーンショット 2024-03-16 0 22 32" src="https://github.com/gemunopedy/IoT_Hands-on/assets/1537206/f9229c30-029f-4923-9fee-bcb9d35e7a1d">
-* ログイン画面
-<img width="80%" alt="スクリーンショット 2024-03-16 0 23 26" src="https://github.com/gemunopedy/IoT_Hands-on/assets/1537206/caf91dc3-e4d8-43b0-8039-e0c4d419d85c">
-* 
+* ICGWのクラウドサービス接続機能を確認していきます。端末からICGWのイベントエントリーポイントに対してデータをPOST送信するだけで、今回の場合はGoogle cloudeのpub/subに対してメッセージ送信してくれる機能となります。
+<img width="1061" alt="スクリーンショット 2024-03-15 22 00 02" src="https://github.com/gemunopedy/IoT_Hands-on/assets/1537206/ac1ad448-d598-4bbc-8c70-37217367accc">  
+<img width="1373" alt="スクリーンショット 2024-03-18 14 57 24" src="https://github.com/gemunopedy/IoT_Hands-on/assets/1537206/e45d61a0-0508-4376-b6c8-f14f4f0b5a9c">
+
+* まずはクラウドサービス接続するために必要なGoogle cloud Pub/Subの設定を行っていきます。
+* google cloud　コンソールにログインします。
+<img width="30%" alt="スクリーンショット 2024-03-16 0 22 32" src="https://github.com/gemunopedy/IoT_Hands-on/assets/1537206/f9229c30-029f-4923-9fee-bcb9d35e7a1d">
+<img width="30%" alt="スクリーンショット 2024-03-16 0 23 26" src="https://github.com/gemunopedy/IoT_Hands-on/assets/1537206/caf91dc3-e4d8-43b0-8039-e0c4d419d85c">
+
