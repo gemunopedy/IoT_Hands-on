@@ -201,3 +201,8 @@ https://sdpf.ntt.com/services/docs/icgw/tutorials/rsts/remote/index.html#about-s
 <img width="80%" alt="スクリーンショット 2024-03-15 21 19 47" src="https://github.com/gemunopedy/IoT_Hands-on/assets/1537206/0fa6e2ce-f347-4f74-b457-55cd4b5ba770">
 
 ### 2.2 クラウドサービス接続
+* google cloud　コンソール接続
+<img width="80%" alt="スクリーンショット 2024-03-16 0 22 32" src="https://github.com/gemunopedy/IoT_Hands-on/assets/1537206/f9229c30-029f-4923-9fee-bcb9d35e7a1d">
+* ログイン画面
+<img width="80%" alt="スクリーンショット 2024-03-16 0 23 26" src="https://github.com/gemunopedy/IoT_Hands-on/assets/1537206/caf91dc3-e4d8-43b0-8039-e0c4d419d85c">
+* 
