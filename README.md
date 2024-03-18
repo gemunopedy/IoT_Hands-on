@@ -1,4 +1,4 @@
-# IoTハンズオン
+<img width="721" alt="スクリーンショット 2024-03-16 0 28 50" src="https://github.com/gemunopedy/IoT_Hands-on/assets/1537206/d5c47581-ff80-49f4-9f6c-971f18746aae"># IoTハンズオン
 IoTハンズオンの手順書です。
 
 ハンズオンの内容としては、ラズパイで温度情報を取得し、そのデータをICGWサービスを利用してGoogle Cloude上にデータ送信を行い、クラウド上で温度情報をグラフ化（可視化）するハンズオンとなっています。
@@ -216,11 +216,31 @@ https://sdpf.ntt.com/services/docs/icgw/tutorials/rsts/remote/index.html#about-s
 
 ### 2.2 クラウドサービス接続
 * ICGWのクラウドサービス接続機能を確認していきます。端末からICGWのイベントエントリーポイントに対してデータをPOST送信するだけで、今回の場合はGoogle cloudeのpub/subに対してメッセージ送信してくれる機能となります。
-<img width="1061" alt="スクリーンショット 2024-03-15 22 00 02" src="https://github.com/gemunopedy/IoT_Hands-on/assets/1537206/ac1ad448-d598-4bbc-8c70-37217367accc">  
-<img width="1373" alt="スクリーンショット 2024-03-18 14 57 24" src="https://github.com/gemunopedy/IoT_Hands-on/assets/1537206/e45d61a0-0508-4376-b6c8-f14f4f0b5a9c">
+<img width="50%" alt="スクリーンショット 2024-03-15 22 00 02" src="https://github.com/gemunopedy/IoT_Hands-on/assets/1537206/ac1ad448-d598-4bbc-8c70-37217367accc">  
+<img width="50%" alt="スクリーンショット 2024-03-18 14 57 24" src="https://github.com/gemunopedy/IoT_Hands-on/assets/1537206/e45d61a0-0508-4376-b6c8-f14f4f0b5a9c">
 
+#### 2.2.1 Pub/Sub設定
 * まずはクラウドサービス接続するために必要なGoogle cloud Pub/Subの設定を行っていきます。
-* google cloud　コンソールにログインします。
+* google cloud　コンソールにログインします。（ID/PWは当日お伝えします。）
 <img width="30%" alt="スクリーンショット 2024-03-16 0 22 32" src="https://github.com/gemunopedy/IoT_Hands-on/assets/1537206/f9229c30-029f-4923-9fee-bcb9d35e7a1d">
 <img width="30%" alt="スクリーンショット 2024-03-16 0 23 26" src="https://github.com/gemunopedy/IoT_Hands-on/assets/1537206/caf91dc3-e4d8-43b0-8039-e0c4d419d85c">
 
+* 以下のような画面が出ればログイン完了です。（表示される画面が異なる可能性がありますが、上部の「My First Project」等が表示されていればログイン完了となります。  
+<img width="50%" alt="スクリーンショット 2024-03-16 0 25 48" src="https://github.com/gemunopedy/IoT_Hands-on/assets/1537206/cf0c2c55-c798-4e69-86fd-b34beb256059">
+
+* Pub/Subの設定を行っていきます。Pub/Subについては下記URL等参照お願いします。  
+https://laboratory.kiyono-co.jp/69/gcp/
+
+* まずは、トピックの作成からになります。メニューから「Pub/Sub」を選択します。
+<img width="50%" alt="スクリーンショット 2024-03-16 0 27 09" src="https://github.com/gemunopedy/IoT_Hands-on/assets/1537206/698f5fdb-00c2-40c4-9634-48bf4aff3e5f">
+
+* 上部の「トピックを作成」をクリックします。
+<img width="50%" alt="スクリーンショット 2024-03-16 0 27 32" src="https://github.com/gemunopedy/IoT_Hands-on/assets/1537206/446ab45c-43d6-4c97-b323-4cf066fe98cd">
+
+* トピックIDに自分が作成したものと分かる形で入力し、その他は変更なしで「作成」をクリックします。
+<img width="50%" alt="スクリーンショット 2024-03-16 0 28 06" src="https://github.com/gemunopedy/IoT_Hands-on/assets/1537206/960fb831-a85a-46ce-b9e8-4ac12e76b81a">
+
+* トピックの一覧に先ほど作成したトピックが表示されていることを確認して、作成したトピックをクリックします。自動で生成されているサブスクリプションを確認します。
+<img width="50%" alt="スクリーンショット 2024-03-16 0 28 50" src="https://github.com/gemunopedy/IoT_Hands-on/assets/1537206/c5db9086-f468-478e-b5a4-032a4fe2ea6f">
+
+#### 2.2.2 IAM設定
