@@ -1,4 +1,4 @@
-<img width="721" alt="スクリーンショット 2024-03-16 0 28 50" src="https://github.com/gemunopedy/IoT_Hands-on/assets/1537206/d5c47581-ff80-49f4-9f6c-971f18746aae"># IoTハンズオン
+# IoTハンズオン
 IoTハンズオンの手順書です。
 
 ハンズオンの内容としては、ラズパイで温度情報を取得し、そのデータをICGWサービスを利用してGoogle Cloude上にデータ送信を行い、クラウド上で温度情報をグラフ化（可視化）するハンズオンとなっています。
