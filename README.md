@@ -275,5 +275,72 @@ https://laboratory.kiyono-co.jp/69/gcp/
 <img width="80%" alt="スクリーンショット 2024-03-19 8 16 23" src="https://github.com/gemunopedy/IoT_Hands-on/assets/1537206/29c67ec5-9b8d-4704-964f-800f3af0dc60">
 <img width="80%" alt="スクリーンショット 2024-03-19 8 29 16" src="https://github.com/gemunopedy/IoT_Hands-on/assets/1537206/274f0d8f-8dcd-4271-9788-6ce1287db3aa">
 
+* ICGWの設定が完了したので、実際にデータを送信してみます。まずは、データ送信するためのpythonスクリプトをダウンロードします。
+* ~/raphael-kit/python配下でcurlコマンドの実施をお願いします。（pythonスクリプト内で該当フォルダ配下のモジュールを使用しているため）
+`(hands-on) morita@raspberrypi:~/raphael-kit/python $ curl --output icgw_temp.py https://raw.githubusercontent.com/gemunopedy/IoT_Hands-on/main/icgw_temp.py`
 
+* スクリプトを実行して以下のようなターミナル表示がされていればデータ転送ができている状態となります。
+* スクリプトを止める際には「Ctrl+C」で停止できます。
+`(hands-on) morita@raspberrypi:~/raphael-kit/python $ python3 icgw_temp.py`
 
+<img width="50%" alt="スクリーンショット 2024-03-20 23 39 50" src="https://github.com/gemunopedy/IoT_Hands-on/assets/1537206/3de11c07-01ff-4e68-868a-edd159f2635f">
+
+* Pub/Sub側はでメッセージを受信しているかを確認します。先ほど作成したサブスクリプションを選択して、メッセージタブをクリックします。
+<img width="50%" alt="スクリーンショット 2024-03-16 0 49 58" src="https://github.com/gemunopedy/IoT_Hands-on/assets/1537206/011dd188-9679-4fac-a677-005219aafe23">
+
+* 「PULL」をクリックして、以下のように温度情報一覧が表示されていれば、無事ICGWのクラウド接続機能を利用してGoogle Cloud上のPub/Subへメッセージ送信ができていることになります。
+<img width="50%" alt="スクリーンショット 2024-03-20 23 44 16" src="https://github.com/gemunopedy/IoT_Hands-on/assets/1537206/34c8fa62-f81e-4b8a-90d7-a77ef76efaff">
+
+* 指標タブ上でもメッセージを受信していればグラフ上に変化が表れます。
+<img width="50%" alt="スクリーンショット 2024-03-20 23 43 28" src="https://github.com/gemunopedy/IoT_Hands-on/assets/1537206/ff38a7e1-54ae-4187-b33a-c77afa778051">
+
+## 3 データ可視化（BigQueryのクエリ結果のグラフによる可視化）
+* Google cloud上で受信した温度情報をBigQueryを使ってグラフ化します。（当初予定のElasticsearch+kibana構成からの変更となってしまい申し訳ございません。）
+* BigQueryはデータ分析を可能とするデータウェアハウスのフルマネージドサービスです。
+
+### 3.1 BigQuery設定
+* BigQueryのテーブル作成を行っていきます。左部にある「BigQuery」をクリックします。
+<img width="30%" alt="スクリーンショット 2024-03-20 23 57 17" src="https://github.com/gemunopedy/IoT_Hands-on/assets/1537206/f0ed380b-0e65-4dcd-b444-37ec2c49ac3c">
+<img width="30%" alt="スクリーンショット 2024-03-16 0 57 43" src="https://github.com/gemunopedy/IoT_Hands-on/assets/1537206/55847bfc-09b2-457f-99b4-f15293462b1b">
+
+* civil-sprite-416602の右にある三点リーダーをクリックし、「データセットを作成」を選択します。
+<img width="50%" alt="スクリーンショット 2024-03-16 0 57 57" src="https://github.com/gemunopedy/IoT_Hands-on/assets/1537206/c1994761-8cdf-430c-973b-ce69a755f747">
+
+* データセットIDを自分が作成したものと分かるものを入力して「データセットを作成」をクリックします。
+<img width="50%" alt="スクリーンショット 2024-03-16 0 58 19" src="https://github.com/gemunopedy/IoT_Hands-on/assets/1537206/f809015b-4dad-4e03-816b-c360761027ca">
+
+* リスト上に作成されたデータセットが表示されたら、その右にある三点リーダーをクリックして「テーブルを作成」を選択します。
+<img width="50%" alt="スクリーンショット 2024-03-16 0 58 31" src="https://github.com/gemunopedy/IoT_Hands-on/assets/1537206/1fc32652-d639-4203-86b1-1bf5f857e572">
+
+* テーブル名を入力します。（後ほどこのテーブル名をPub/Sub設定時に利用するので、覚えやすい名前の方がやりやすいです。）
+* 「フィールドを追加」をクリックして、2つのフィールドを以下のように作成します。（フィールド名とタイプは以下と異なると正しくテーブル上にデータ挿入されないためタイプミス無いようお願いします。）
+<img width="50%" alt="スクリーンショット 2024-03-16 0 59 18" src="https://github.com/gemunopedy/IoT_Hands-on/assets/1537206/6fcb04a7-c1af-468c-af06-5b4ef3eedb51">
+
+* 「テーブルを作成」をクリックし、リスト上にテーブルが表示されていれば、BigQuery上での設定は完了となります。
+<img width="50%" alt="スクリーンショット 2024-03-16 0 59 33" src="https://github.com/gemunopedy/IoT_Hands-on/assets/1537206/e5d786de-272d-41c7-b34c-874ecbea783d">
+
+### 3.2 Pub/Sub設定
+* BigQueryの先ほど作成したテーブルにPub/Subで受信したメッセージを書き込むため用のサブスクリプションを作成します。
+* Pub/Subに移動し、「サブスクリプションを作成」をクリックします。
+* サブスクリプションIDを入力し、配信タイプを「BigQueryへの書き込み」を選択し、「テーブル」に先ほど作成したテーブル名を入力します。下の方の「作成」をクリックします。
+<img width="50%" alt="スクリーンショット 2024-03-16 0 59 59" src="https://github.com/gemunopedy/IoT_Hands-on/assets/1537206/83363425-d53d-48f0-8116-c371c0ca9754">
+<img width="50%" alt="スクリーンショット 2024-03-16 1 00 30" src="https://github.com/gemunopedy/IoT_Hands-on/assets/1537206/f6bcafc5-102e-427b-bc5b-b136374f56a1">
+
+* サブスクリプションのリストに作成したサブスクリプションが表示されていれば作成完了です。
+* 再度スクリプトを実行して、BigQuery上にデータが書き込まれていることを確認していきます。
+* BigQueryに移動し、先ほど作成したテーブルを選択します。「プレビュー」タブを選択して、timeとtemp情報が表示されていれば、Pub/SubからBigQeryへのデータ書き込みが正常に行われています。
+<img width="50%" alt="スクリーンショット 2024-03-16 1 02 18" src="https://github.com/gemunopedy/IoT_Hands-on/assets/1537206/adc50e5f-4435-4544-b499-a294b500a9c9">
+
+* 続いて温度情報をグラフ化して確認します。「クエリ」タブを選択し、「新しいタブ」をクリックします。
+<img width="50%" alt="スクリーンショット 2024-03-16 1 07 28" src="https://github.com/gemunopedy/IoT_Hands-on/assets/1537206/ea8f2636-9e71-415f-8f11-4fbd84590550">
+
+* 表示されているクエリに対してSELECTとFROMの間にアスタリスクを入力して、実行をクリックします。
+<img width="50%" alt="スクリーンショット 2024-03-16 1 07 37" src="https://github.com/gemunopedy/IoT_Hands-on/assets/1537206/a0e98875-7834-42a2-9391-6fa27746a529">
+
+* クエリ結果が表示されたら、隣の「グラフ」を選択します。
+<img width="50%" alt="スクリーンショット 2024-03-16 1 07 47" src="https://github.com/gemunopedy/IoT_Hands-on/assets/1537206/12a271fc-c0ee-41ea-a5e3-0eb07d20c89c">
+
+* 以下のようにグラフが表示されていれば、IoTデバイスから取得したデータを可視化することができた形になります。
+<img width="50%" alt="スクリーンショット 2024-03-16 1 09 36" src="https://github.com/gemunopedy/IoT_Hands-on/assets/1537206/079cfd05-8d21-4ed7-a493-f247f4c0866c">
+
+ハンズオン内容としては以上となります。有難うございました。
