@@ -148,7 +148,7 @@ https://sozorablog.com/raspberrypi_initial_setting/
 
 * スクリプトをダウンロードして、スクリプトを実行します。
 
-`(hands-on) morita@raspberrypi:~/raphael-kit/python $ git clone https://github.com/sunfounder/raphael-kit.git`  
+`(hands-on) morita@raspberrypi:~ $ git clone https://github.com/sunfounder/raphael-kit.git`  
 `(hands-on) morita@raspberrypi:~ $ cd raphael-kit/python`  
 `(hands-on) morita@raspberrypi:~/raphael-kit/python $`  
 `(hands-on) morita@raspberrypi:~/raphael-kit/python $ sudo python3 2.2.2_Thermistor.py `  
